@@ -10,16 +10,17 @@
 #include <Adafruit_GFX.h>   // Core graphics library
 #include <RGBmatrixPanel.h> // Hardware-specific library
 
-#define CLK 8  // MUST be on PORTB! (Use pin 11 on Mega)
-#define LAT A3
+#define CLK 11  // MUST be on PORTB! (Use pin 11 on Mega)
+#define LAT 10
 #define OE  9
 #define A   A0
 #define B   A1
 #define C   A2
+#define n   2 // inline panels number
 // Last parameter = 'true' enables double-buffering, for flicker-free,
 // buttery smooth animation.  Note that NOTHING WILL SHOW ON THE DISPLAY
 // until the first call to swapBuffers().  This is normal.
-RGBmatrixPanel matrix(A, B, C, CLK, LAT, OE, true);
+RGBmatrixPanel matrix(A, B, C, CLK, LAT, OE, true, 32*n);
 
 static const int8_t PROGMEM sinetab[256] = {
      0,   2,   5,   8,  11,  15,  18,  21,

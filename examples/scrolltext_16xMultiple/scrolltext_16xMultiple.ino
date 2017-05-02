@@ -12,21 +12,22 @@
 // Similar to F(), but for PROGMEM string pointers rather than literals
 #define F2(progmem_ptr) (const __FlashStringHelper *)progmem_ptr
 
-#define CLK 8  // MUST be on PORTB! (Use pin 11 on Mega)
-#define LAT A3
+#define CLK 11  // MUST be on PORTB! (Use pin 11 on Mega)
+#define LAT 10
 #define OE  9
 #define A   A0
 #define B   A1
 #define C   A2
+#define n   2   // Number of inline panels
 // Last parameter = 'true' enables double-buffering, for flicker-free,
 // buttery smooth animation.  Note that NOTHING WILL SHOW ON THE DISPLAY
 // until the first call to swapBuffers().  This is normal.
-RGBmatrixPanel matrix(A, B, C, CLK, LAT, OE, true);
+RGBmatrixPanel matrix(A, B, C, CLK, LAT, OE, true, 32*n);
 // Double-buffered mode consumes nearly all the RAM available on the
 // Arduino Uno -- only a handful of free bytes remain.  Even the
 // following string needs to go in PROGMEM:
 
-const char str[] PROGMEM = "Adafruit 16x32 RGB LED Matrix";
+const char str[] PROGMEM = "T.E.A. Sistemi";
 int    textX   = matrix.width(),
        textMin = sizeof(str) * -12,
        hue     = 0;
@@ -56,7 +57,7 @@ void loop() {
   // Bounce three balls around
   for(i=0; i<3; i++) {
     // Draw 'ball'
-    matrix.fillCircle(ball[i][0], ball[i][1], 5, pgm_read_word(&ballcolor[i]));
+    matrix.fillCircle(ball[i][0], ball[i][1], 3, pgm_read_word(&ballcolor[i]));
     // Update X, Y position
     ball[i][0] += ball[i][2];
     ball[i][1] += ball[i][3];
@@ -74,7 +75,7 @@ void loop() {
 
   // Move text left (w/wrap), increase hue
   if((--textX) < textMin) textX = matrix.width();
-  hue += 7;
+  hue += 35;
   if(hue >= 1536) hue -= 1536;
 
   // Update display
