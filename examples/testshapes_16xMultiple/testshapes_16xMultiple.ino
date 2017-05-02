@@ -50,10 +50,6 @@ void setup() {
   
   // fill the screen with 'black'
   matrix.fillScreen(matrix.Color333(0, 0, 0));
-  
-  // draw some text!
-  matrix.setCursor(17, 0);   // start at top left, with one pixel of spacing
-  matrix.setTextSize(1);    // size 1 == 8 pixels high
 
   // draw a box in Green
   matrix.fillRect(0, 0, 16, 16, matrix.Color333(0, 7, 0));
@@ -66,6 +62,10 @@ void setup() {
   // draw a box in Red
   matrix.fillRect(48, 0, 16, 16, matrix.Color333(7, 0, 0));
   delay(250);
+  
+  // draw some text!
+  matrix.setCursor(17, 0);   // start at top left, with one pixel of spacing
+  matrix.setTextSize(1);    // size 1 == 8 pixels high
 
   // fill the screen with 'black'
   matrix.fillScreen(matrix.Color333(0, 0, 0));
@@ -90,9 +90,9 @@ void setup() {
   matrix.setTextColor(matrix.Color333(0,0,7));
   matrix.print('G');
   matrix.setTextColor(matrix.Color333(4,0,7)); 
-  matrix.print("B");
+  matrix.print('B');
   matrix.setTextColor(matrix.Color333(7,0,4)); 
-  matrix.print("*");
+  matrix.print('*');
 
   // whew!
 }
