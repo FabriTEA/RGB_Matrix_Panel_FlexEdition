@@ -66,6 +66,9 @@ void setup() {
   // draw a box in Red
   matrix.fillRect(48, 0, 16, 16, matrix.Color333(7, 0, 0));
   delay(250);
+
+  // fill the screen with 'black'
+  matrix.fillScreen(matrix.Color333(0, 0, 0));
   
   // print each letter with a rainbow color
   matrix.setTextColor(matrix.Color333(7,0,0));
