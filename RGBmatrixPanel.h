@@ -18,6 +18,10 @@ class RGBmatrixPanel : public Adafruit_GFX {
   RGBmatrixPanel(uint8_t a, uint8_t b, uint8_t c,
     uint8_t sclk, uint8_t latch, uint8_t oe, boolean dbuf, uint8_t width);
 
+  // Constructor for 16xn panel BIG:
+  RGBmatrixPanel(uint8_t a, uint8_t b, uint8_t c,
+    uint8_t sclk, uint8_t latch, uint8_t oe, boolean dbuf, uint8_t width, bool big);
+
   // Constructor for 32x32 panel (adds 'd' pin):
   RGBmatrixPanel(uint8_t a, uint8_t b, uint8_t c, uint8_t d,
     uint8_t sclk, uint8_t latch, uint8_t oe, boolean dbuf, uint8_t width=32);
@@ -42,6 +46,7 @@ class RGBmatrixPanel : public Adafruit_GFX {
 
   uint8_t         *matrixbuff[2];
   uint8_t          nRows;
+  bool				flag_big;
   volatile uint8_t backindex;
   volatile boolean swapflag;
 
